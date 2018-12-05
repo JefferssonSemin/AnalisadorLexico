@@ -1,0 +1,11 @@
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\bin\Debug\netcoreapp2.0\AnalisadorLexico.deps.json
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\bin\Debug\netcoreapp2.0\AnalisadorLexico.runtimeconfig.json
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\bin\Debug\netcoreapp2.0\AnalisadorLexico.runtimeconfig.dev.json
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\bin\Debug\netcoreapp2.0\AnalisadorLexico.dll
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\obj\Debug\netcoreapp2.0\AnalisadorLexico.csprojResolveAssemblyReference.cache
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\obj\Debug\netcoreapp2.0\AnalisadorLexico.csproj.CoreCompileInputs.cache
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\obj\Debug\netcoreapp2.0\AnalisadorLexico.AssemblyInfoInputs.cache
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\obj\Debug\netcoreapp2.0\AnalisadorLexico.AssemblyInfo.cs
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\bin\Debug\netcoreapp2.0\AnalisadorLexico.pdb
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\obj\Debug\netcoreapp2.0\AnalisadorLexico.dll
+C:\Users\FelipePutsch\Desktop\Analisador\Back\AnalisadorLexico\obj\Debug\netcoreapp2.0\AnalisadorLexico.pdb
