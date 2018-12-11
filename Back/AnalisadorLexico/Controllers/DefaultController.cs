@@ -20,20 +20,91 @@ namespace AnalisadorLexico.Controllers
             Db = new StaticDB();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("VerificarTexto")]
-        public bool VerificarTexto(string texto)
+        public bool VerificarTexto([FromBody]Model modelo)
         {
-            texto.Trim();
-            bool Valor = true;
-            Valor = VerificaSeTemDigitoFinalizador(texto);
-            return Valor;
+            bool valido = true;
+            modelo.Texto = modelo.Texto.ToUpper();
+            string[] stringSeparators = new string[] { "\r\n" };
+            string[] lines = modelo.Texto.Split(stringSeparators, StringSplitOptions.None);
+
+            foreach (var item in lines)
+            {
+                var linha = item.Trim();
+                if (!string.IsNullOrEmpty(linha))
+                {
+                    if (VerificaSeTemCondicao(linha))
+                    {
+                        VerificaSeECondicional(linha);
+                    }
+                    else if (VerificaSeTemRepeticao(linha))
+                    {
+                        VerificaSeERepeticao();
+                    }
+                    else if (VerificaSeEVariavel(linha))
+                    {
+                        VerificaSintaxeEPegaVariavel(linha);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return valido;
         }
 
-        public bool VerificaSeTemDigitoFinalizador(string texto)
+        private bool VerificaSeTemCondicao(string linha)
+        {
+            Regex rx = new Regex(@"^(" + string.Join("|", Db.EstruturaCondicao) + ")+(.*.)");
+            return rx.Matches(linha).Count() > 0;
+        }
+
+        private bool VerificaSintaxeEPegaVariavel(string linha)
+        {
+            Regex rx = new Regex(@"^" + string.Join("|", Db.Tipos) + "\\s+(.*.)");
+            if (rx.Matches(linha).Count() == 0)
+            {
+                return false;
+            }
+            if (!VerificaSeTemDigitoFinalizador(linha))
+            {
+                return false;
+            }
+            var palavras = linha.Split(" ");
+            Db.Variaveis.Add(palavras[1].Replace(";", ""));
+            return true;
+        }
+
+        private bool VerificaSeECondicional(string linha)
+        {
+            Regex rx = new Regex(@"^(" + string.Join("|", Db.EstruturaCondicao) + ")+\\(+(" + string.Join("|", Db.Variaveis) + ")+(" + string.Join("|", Db.CharsComparacao) + ")+(" + string.Join("|", Db.Variaveis) + ")+\\)+{$");
+            return rx.Matches(linha).Count() > 0;
+        }
+
+        private bool VerificaSeTemRepeticao(string linha)
+        {
+            Regex rx = new Regex(@"^(" + string.Join("|", Db.EstruturasRepeticao) + ")");
+            return rx.Matches(linha).Count() > 0;
+        }
+
+        private bool VerificaSeERepeticao(string linha)
+        {
+            Regex rx = new Regex(@"^(" + string.Join("|", Db.EstruturasRepeticao) + ")+\\(+(" + string.Join("|", Db.Variaveis) + ")+(" + string.Join("|", Db.CharsRepeticao) + ")+(" + string.Join("|", Db.Variaveis) + ")+\\)+{$");
+            return rx.Matches(linha).Count() > 0;
+        }
+
+        private bool VerificaSeEVariavel(string linha)
+        {
+            Regex rx = new Regex(@"^" + string.Join("|", Db.Tipos) + "");
+            return rx.Matches(linha).Count() > 0;
+        }
+
+        private bool VerificaSeTemDigitoFinalizador(string linha)
         {
             Regex rx = new Regex(@"[" + Db.CharFimLinha + "]$");
-            return rx.Matches(texto).Count() > 0;
+            return rx.Matches(linha).Count() > 0;
         }
     }
 }

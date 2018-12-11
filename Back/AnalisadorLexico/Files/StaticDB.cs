@@ -8,8 +8,10 @@ namespace AnalisadorLexico.Files
         public List<string> EstruturasRepeticao { get; set; }
         public List<string> EstruturaCondicao { get; set; }
         public List<string> CharsComparacao { get; set; }
+        public List<string> CharsRepeticao { get; set; }
         public List<string> CharsAtribuicao { get; set; }
-        public Tuple<string, bool, List<string>> TiposEValores { get; set; }
+        public List<string> Tipos { get; set; }
+        public List<string> Variaveis { get; set; }
         public string CharFimLinha { get; set; }
         public string CharInicioCondicao { get; set; }
         public string CharFimCondicao { get; set; }
@@ -35,6 +37,13 @@ namespace AnalisadorLexico.Files
             CharsAtribuicao = new List<string>() {
                 "=","-=","+="
             };
+            Tipos = new List<string>() {
+                "INT","STRING","BOOLEAN"
+            };
+            CharsRepeticao = new List<string>() {
+                "IN"
+            };
+            Variaveis = new List<string>();
         }
     }
 
