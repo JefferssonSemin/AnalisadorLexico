@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from './api.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'analisadorFront';
+  str = 'digite aqui...';
+  ApiService: ApiService;
+  retorno: string;
+
+  enviaValores(value: string): void {
+    console.log(value.toString);
+    this.ApiService.ApiService(value).subscribe(data =>  this.retorno = data.toString());
+  }
 }
