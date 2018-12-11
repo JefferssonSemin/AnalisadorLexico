@@ -26,7 +26,7 @@ namespace AnalisadorLexico.Files
             CharInicioBloco = "{";
             CharFimBloco = "}";
             EstruturasRepeticao = new List<string>() {
-                "WHILE"
+                "FOREACH"
             };
             EstruturaCondicao = new List<string>() {
                 "IF","ELSE"

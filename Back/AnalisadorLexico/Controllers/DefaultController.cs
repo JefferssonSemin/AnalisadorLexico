@@ -40,7 +40,7 @@ namespace AnalisadorLexico.Controllers
                     }
                     else if (VerificaSeTemRepeticao(linha))
                     {
-                        VerificaSeERepeticao();
+                        VerificaSeERepeticao(linha);
                     }
                     else if (VerificaSeEVariavel(linha))
                     {
