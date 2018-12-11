@@ -1,0 +1,3 @@
+interface Retorno {
+    mensagem: string;
+}

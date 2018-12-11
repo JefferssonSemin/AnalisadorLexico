@@ -6,11 +6,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
 
-  private url = 'http://';
+  private url = 'http://localhost:2745/api/Default/VerificarTexto';
 
   constructor(private http: HttpClient) { }
 
-  ApiService(value: string) {
-    return this.http.post(this.url , value);
+  consulta(value: string) {
+    return this.http.post(this.url , {Texto : value});
   }
 }
