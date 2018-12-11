@@ -36,15 +36,24 @@ namespace AnalisadorLexico.Controllers
                 {
                     if (VerificaSeTemCondicao(linha))
                     {
-                        VerificaSeECondicional(linha);
+                        if (!VerificaSeECondicional(linha))
+                        {
+                            return false;
+                        };
                     }
                     else if (VerificaSeTemRepeticao(linha))
                     {
-                        VerificaSeERepeticao(linha);
+                        if (!VerificaSeERepeticao(linha))
+                        {
+                            return false;
+                        }
                     }
                     else if (VerificaSeEVariavel(linha))
                     {
-                        VerificaSintaxeEPegaVariavel(linha);
+                        if (!VerificaSintaxeEPegaVariavel(linha))
+                        {
+                            return false;
+                        }
                     }
                     else
                     {
